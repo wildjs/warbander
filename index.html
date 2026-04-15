@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warbander</title>
-    <style>
-        body, html {
-            background-color: black;
-            color: whitesmoke;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="css/base.css">
     <script src="javascript/base.js" defer></script>
 </head>
 <body>
-    Hi!
-    <button onclick="save()">Open</button>
-    <a href="pages/warband.html">Link</a>
+    <nav>
+        Warbander
+    </nav>
+    <main>
+        <button onclick="route('pages/warband.html')">Route</button>
+        <button onclick="save()">Open</button>
+        <a href="pages/warband.html">Link</a>
+    </main>
 
     <script defer>
+        const main = document.querySelector('main');
+
         let fileHandle = undefined;
 
         function save() {
@@ -50,6 +49,13 @@
         }
 
 
+        async function route(url) {
+            const response = await fetch(url);
+            if (response.status === 200) {
+                const asText = await response.text();
+                main.innerHTML = asText;
+            }
+        }
     </script>
 </body>
 </html>
