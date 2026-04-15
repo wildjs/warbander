@@ -5,50 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warbander</title>
     <link rel="stylesheet" href="css/base.css">
+    <script src="javascript/base.js" defer></script>
+    <script src="javascript/warband_selection.js" defer></script>
     <script src="javascript/warband.js" defer></script>
     <script src="javascript/router.js" defer></script>
-    <script src="javascript/base.js" defer></script>
 </head>
 <body>
-    <nav>
-        Warbander
-    </nav>
     <main>
-        <button onclick="route('pages/warband.html')">Route</button>
-        <button onclick="save()">Open</button>
-        <a href="pages/warband.html">Link</a>
     </main>
-
-    <script defer>
-        const main = document.querySelector('main');
-
-        let fileHandle = undefined;
-
-        function save() {
-            const list = {
-                name: 'My Warband' + performance.now(),
-            };
-            const asString = JSON.stringify(list);
-            toDisk(asString);
-        }
-
-        async function fromDisk() {
-
-        }
-
-        async function toDisk(asString) {
-            console.log(asString);
-            let filestream = undefined;
-            if (fileHandle) {
-                console.log('Already Exists');
-                fileStream = await fileHandle.createWritable();
-            } else {
-                fileHandle = await window.showSaveFilePicker();
-                fileStream = await fileHandle.createWritable();
-            }
-            await fileStream.write(new Blob([asString], {type: "text/plain"}));
-            await fileStream.close();
-        }
-    </script>
 </body>
 </html>
