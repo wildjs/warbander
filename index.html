@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warbander</title>
     <link rel="stylesheet" href="css/base.css">
+    <script src="javascript/warband.js" defer></script>
+    <script src="javascript/router.js" defer></script>
     <script src="javascript/base.js" defer></script>
 </head>
 <body>
@@ -46,15 +48,6 @@
             }
             await fileStream.write(new Blob([asString], {type: "text/plain"}));
             await fileStream.close();
-        }
-
-
-        async function route(url) {
-            const response = await fetch(url);
-            if (response.status === 200) {
-                const asText = await response.text();
-                main.innerHTML = asText;
-            }
         }
     </script>
 </body>
