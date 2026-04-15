@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warbander</title>
+    <style>
+        body, html {
+            background-color: black;
+            color: whitesmoke;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    Hi!
+    <button onclick="open()">Open</button>
+
+    <script defer>
+        let fileHandle = undefined;
+
+        function open() {
+            const list = {
+                name: 'My Warband' + performance.now(),
+            };
+            const asString = JSON.stringify(list);
+            toDisk(asString);
+        }
+
+        async function fromDisk() {
+
+        }
+
+        async function toDisk(asString) {
+            console.log(asString);
+            let filestream = undefined;
+            if (fileHandle) {
+                console.log('Already Exists');
+                fileStream = await fileHandle.createWritable();
+            } else {
+                fileHandle = await window.showSaveFilePicker();
+                fileStream = await fileHandle.createWritable();
+            }
+            await fileStream.write(new Blob([asString], {type: "text/plain"}));
+            await fileStream.close();
+        }
+
+
+    </script>
+</body>
+</html>
