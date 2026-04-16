@@ -1,0 +1,49 @@
+.warband {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+}
+
+.warband .stats {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.warband .stats > div {
+    text-align: center;
+    background-color: rgb(61, 61, 61);
+    padding: .3em .5em;
+}
+
+.warband .stats > div:nth-child(12n + 1) {
+    border-radius: 5px 0 0 0;
+}
+.warband .stats > div:nth-child(12n + 6) {
+    border-radius: 0 5px 0 0;
+}
+.warband .stats > div:nth-child(12n + 7) {
+    border-radius: 0 0 0 5px;
+}
+.warband .stats > div:nth-child(12n + 12) {
+    border-radius: 0 0 5px 0;
+}
+
+.bright {
+    background-color: rgb(99, 99, 99) !important;
+    margin-top: 2px;
+}
+
+.warband .unit-header {
+    display: flex;
+    justify-content: space-between;
+    padding: .5em 1em;
+    border-radius: 5px;
+}
+
+.purple {
+    background-color: purple
+}
+
+.blue {
+    background-color: dodgerblue;
+}
